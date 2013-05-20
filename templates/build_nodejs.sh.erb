@@ -1,0 +1,10 @@
+#!/bin/sh
+
+tar xzf node-<%= version %>.tar.gz
+cd node-<%= version %>
+./configure
+make install
+
+if [ $? != 0 ]; then
+  mail -s 'Failed to build nodejs on <%= fqdn %>' <%= admin_email %> < /dev/null
+fi
