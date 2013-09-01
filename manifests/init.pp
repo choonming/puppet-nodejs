@@ -1,4 +1,4 @@
-class nodejs ($version) {
+class nodejs ($version, $arch='x64') {
 
   package { 'python':
     ensure  => present,
@@ -13,7 +13,7 @@ class nodejs ($version) {
   }
 
   exec { 'download nodejs tarball':
-    command => "wget http://nodejs.org/dist/${version}/node-${version}.tar.gz",
+    command => "wget http://nodejs.org/dist/${version}/node-${version}-linux-${arch}.tar.gz",
     cwd     => '/opt',
     require => Package[ ['python', 'g++', 'make'] ],
   }
