@@ -26,7 +26,7 @@ class nodejs ($version, $arch='x64') {
     require => Exec['download nodejs tarball'],
   }
 
-  exec { 'build nodejs',
+  exec { 'build nodejs':
     command => '/opt/build_nodejs.sh &',
     cwd     => '/opt',
     creates => '/usr/local/bin/node',
