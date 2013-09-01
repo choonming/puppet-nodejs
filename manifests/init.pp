@@ -17,6 +17,7 @@ class nodejs ($version, $arch='x64') {
     cwd     => '/opt',
     creates => "/opt/node-${version}-linux-${arch}.tar.gz",
     require => Package[ ['python', 'g++', 'make'] ],
+    notify  => Exec['build nodejs'],
   }
 
   file { '/opt/build_nodejs.sh':
@@ -31,7 +32,7 @@ class nodejs ($version, $arch='x64') {
     cwd     => '/opt',
     creates => '/usr/local/bin/node',
     path    => '/usr/bin:/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin',
-    require => [ File['/opt/build_nodejs.sh'], Exec['download nodejs tarball'] ],
+    require => File['/opt/build_nodejs.sh'],
   }
 
 }
