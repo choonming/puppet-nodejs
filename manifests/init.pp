@@ -1,7 +1,9 @@
 class nodejs ($version, $arch='x64') {
 
-  package { 'python':
-    ensure  => present,
+  if ! defined(Package['python']) { 
+    package { 'python':
+      ensure  => present,
+    }
   }
 
   package { 'g++':
