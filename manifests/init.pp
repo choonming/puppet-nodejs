@@ -24,7 +24,7 @@ class nodejs ($version, $arch='x64') {
 
   file { '/opt/build_nodejs.sh':
     ensure  => present,
-    source  => 'puppet:///modules/nodejs/build_nodejs.sh',
+    content => template('nodejs/build_nodejs.sh.erb'),
     mode    => '0755',
     require => Exec['download nodejs tarball'],
   }
