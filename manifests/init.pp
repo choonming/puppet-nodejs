@@ -15,7 +15,7 @@ class nodejs ($version, $arch='x64') {
   }
 
   exec { 'download nodejs tarball':
-    command => "wget http://nodejs.org/dist/${version}/node-${version}-linux-${arch}.tar.gz",
+    command => "/usr/bin/wget http://nodejs.org/dist/${version}/node-${version}-linux-${arch}.tar.gz",
     cwd     => '/opt',
     creates => "/opt/node-${version}-linux-${arch}.tar.gz",
     require => Package[ ['python', 'g++', 'make'] ],
